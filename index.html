@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="description" content="Comeback: your first screen every morning.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Comeback">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Comeback</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="bw">
+<div id="app">
+
+  <header id="top">
+    <span class="mark">Comeback</span>
+    <button class="icon" data-act="settings" aria-label="Settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <section id="v-today" class="view on"></section>
+    <section id="v-wall" class="view pad"></section>
+    <section id="v-progress" class="view pad"></section>
+    <section id="v-alarm" class="view pad"></section>
+  </main>
+
+  <button id="quote" data-act="quoteNext" aria-live="polite"><span></span></button>
+
+  <nav id="tabs">
+    <button data-act="tab" data-tab="today" class="on">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+      <span>Today</span>
+    </button>
+    <button data-act="tab" data-tab="wall">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>
+      <span>Wall</span>
+    </button>
+    <button data-act="tab" data-tab="progress">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 20v-7M12 20V5M19 20v-10"/></svg>
+      <span>Progress</span>
+    </button>
+    <button data-act="tab" data-tab="alarm">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16v-5a6 6 0 1112 0v5l2 2H4l2-2zM10 21h4"/></svg>
+      <span>Alarm</span>
+    </button>
+  </nav>
+</div>
+
+<!-- Picture viewer -->
+<div id="viewer" class="overlay" hidden>
+  <img alt="">
+  <div class="vbar">
+    <button data-act="viewPrev" class="ghost">Back</button>
+    <button data-act="viewNext" class="ghost">Next</button>
+  </div>
+  <div class="vbar bottom">
+    <button data-act="pinPic" class="solid">Set as home picture</button>
+    <button data-act="delPic" class="ghost">Delete</button>
+    <button data-act="closeViewer" class="ghost">Close</button>
+  </div>
+</div>
+
+<!-- Alarm ringing -->
+<div id="ring" class="overlay" hidden>
+  <div class="ring-body">
+    <p id="ring-time" class="big-time"></p>
+    <h2 id="ring-label"></h2>
+    <p id="ring-quote" class="ring-quote"></p>
+  </div>
+  <button id="hold" aria-label="Hold to stop the alarm">
+    <i></i><span>Hold to get up</span>
+  </button>
+</div>
+
+<!-- Bedside armed screen -->
+<div id="armed" class="overlay" hidden>
+  <p id="armed-clock" class="big-time dim"></p>
+  <p id="armed-next" class="armed-next"></p>
+  <button data-act="disarm" class="ghost">Disarm</button>
+</div>
+
+<!-- Settings sheet -->
+<div id="sheet" class="overlay sheet" hidden></div>
+
+<div id="toast" role="status"></div>
+
+<input type="file" id="pic-input" accept="image/*" multiple hidden>
+<input type="file" id="import-input" accept="application/json" hidden>
+
+<script src="app.js"></script>
+</body>
+</html>
